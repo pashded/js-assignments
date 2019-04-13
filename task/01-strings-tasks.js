@@ -56,7 +56,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    return 'Hello, ${firstName} ${lastName}!';
+    return `Hello, ${firstName } ${lastName}!`;
 }
 
 /**
@@ -70,7 +70,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    throw new Error('Not implemented');
+    let firstIndex = value.indexOf(" ");
+	let lastIndex = value.indexOf("!");
+    return value.substring(firstIndex + 1,lastIndex);
 }
 
 
@@ -175,7 +177,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    return str.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+    return str.split(";");
 }
 
 /**
@@ -202,7 +204,7 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    return "┌" + "─".repeat(width-2) + "┐\n" + ("│" + " ".repeat(width-2) +  "│\n").repeat(height - 2) + "└" + "─".repeat(width-2) + "┘\n";
 }
 
 
@@ -271,11 +273,23 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+let card_list = [ 'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
+   'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
+   'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
+   'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
+   
+for (let i = 0; i < card_list.length ; i++)
+{
+    if (value === card_list[i])
+    return i;
+}
+   
+   return -1;
 }
 
 
-module.exports = {
+
+ module.exports = {
     concatenateStrings: concatenateStrings,
     getStringLength: getStringLength,
     getStringFromTemplate: getStringFromTemplate,
