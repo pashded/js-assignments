@@ -23,7 +23,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-   throw new Error('Not implemented');
+   return arr.indexOf(value);
 }
 
 /**
@@ -54,6 +54,8 @@ function generateOdds(len) {
  *    [] => [] 
  */
 function doubleArray(arr) {
+   var arrcopy = arr.slice();
+   return arrcopy;
    throw new Error('Not implemented');
 }
 
@@ -70,7 +72,6 @@ function doubleArray(arr) {
  *    [] => [] 
  */
 function getArrayOfPositives(arr) {
-   throw new Error('Not implemented');
 }
 
 /**
@@ -102,7 +103,7 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-   throw new Error('Not implemented');
+   return arr.filter(Boolean);
 }
 
 /**
@@ -131,6 +132,7 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
+   return new StringBuilder(str).reverse().toString().toCharArray();
    throw new Error('Not implemented');
 }
 
