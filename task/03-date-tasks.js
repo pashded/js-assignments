@@ -80,8 +80,9 @@ if( ((year % 400=== 0) || (year % 100 !== 0)) &&(year % 4 === 0))
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-let date = new Date( endDate.getTime() - startDate.getTime() );
-return (('0' + date.getHours()).slice(-2)+':'+('0' + date.getMinutes()).slice(-2)+':'+('0' + date.getSeconds()).slice(-2)+'.'+("00" + date.getMilliseconds()).slice(-3));
+   var newDate = new Date(endDate - startDate);
+   var retVal = newDate.toISOString();
+   return retVal.slice(retVal.indexOf('T') + 1,-1);
 }
 
 
@@ -99,7 +100,10 @@ return (('0' + date.getHours()).slice(-2)+':'+('0' + date.getMinutes()).slice(-2
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+   var angle = Math.abs((60 * (date.getUTCHours()%12) - 11 * date.getUTCMinutes())/2);
+   if (angle > 180)
+    angle = 360 - angle;
+   return (Math.PI * angle)/180;
 }
 
 
